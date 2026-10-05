@@ -1,0 +1,3868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Flutter Developer Interview Questions</title>
+
+<style>
+/* =========================================================
+   THEME VARIABLES
+========================================================= */
+
+:root {
+    --bg: #f4f6f8;
+    --card: #ffffff;
+    --text: #1f2937;
+    --heading: #111827;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+
+    --answer-bg: #ecfdf5;
+    --answer-border: #10b981;
+
+    --example-bg: #eff6ff;
+    --example-border: #3b82f6;
+
+    --tip-bg: #fff7ed;
+    --tip-border: #f97316;
+
+    --code-bg: #111827;
+    --code-text: #e5e7eb;
+
+    --header-bg: #ffffff;
+    --shadow: rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+body.dark {
+    --bg: #0b1120;
+    --card: #111827;
+    --text: #d1d5db;
+    --heading: #f9fafb;
+    --muted: #9ca3af;
+    --border: #374151;
+
+    --primary: #818cf8;
+    --primary-hover: #a5b4fc;
+
+    --answer-bg: #052e25;
+    --answer-border: #10b981;
+
+    --example-bg: #0c2545;
+    --example-border: #3b82f6;
+
+    --tip-bg: #2b1b08;
+    --tip-border: #f97316;
+
+    --code-bg: #020617;
+    --code-text: #e5e7eb;
+
+    --header-bg: #111827;
+    --shadow: rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: var(--bg);
+    color: var(--text);
+
+    line-height: 1.6;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: var(--header-bg);
+
+    border-bottom: 1px solid var(--border);
+
+    padding: 15px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0 3px 15px var(--shadow);
+}
+
+header h1 {
+    margin: 0;
+
+    color: var(--heading);
+
+    font-size: 22px;
+}
+
+
+/* =========================================================
+   HEADER BUTTON
+========================================================= */
+
+.theme-btn {
+    border: none;
+
+    background: var(--primary);
+    color: white;
+
+    padding: 10px 15px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.theme-btn:hover {
+    background: var(--primary-hover);
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.container {
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 30px 20px 60px;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.hero {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    padding: 30px;
+
+    margin-bottom: 30px;
+
+    box-shadow: 0 5px 20px var(--shadow);
+}
+
+.hero h2 {
+    color: var(--heading);
+
+    margin-top: 0;
+}
+
+.hero p {
+    color: var(--muted);
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-container {
+    margin: 25px 0;
+}
+
+.search {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border-radius: 8px;
+
+    border: 1px solid var(--border);
+
+    background: var(--card);
+
+    color: var(--text);
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+.search:focus {
+    border-color: var(--primary);
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section {
+    margin-top: 40px;
+}
+
+.section-title {
+    color: var(--heading);
+
+    border-bottom: 2px solid var(--primary);
+
+    padding-bottom: 10px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   QUESTION CARD
+========================================================= */
+
+.question {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 24px;
+
+    margin-bottom: 20px;
+
+    box-shadow: 0 4px 15px var(--shadow);
+
+    transition:
+        transform 0.2s,
+        background 0.3s;
+}
+
+.question:hover {
+    transform: translateY(-2px);
+}
+
+.question h3 {
+    color: var(--heading);
+
+    margin-top: 0;
+
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   BADGE
+========================================================= */
+
+.badge {
+    display: inline-block;
+
+    background: var(--primary);
+
+    color: white;
+
+    padding: 3px 8px;
+
+    border-radius: 5px;
+
+    font-size: 11px;
+
+    margin-right: 8px;
+
+    vertical-align: middle;
+}
+
+
+/* =========================================================
+   ANSWER
+========================================================= */
+
+.answer {
+    background: var(--answer-bg);
+
+    border-left: 4px solid var(--answer-border);
+
+    padding: 15px 18px;
+
+    margin-top: 15px;
+
+    border-radius: 6px;
+}
+
+.answer strong {
+    color: var(--heading);
+}
+
+
+/* =========================================================
+   EXAMPLE
+========================================================= */
+
+.example {
+    background: var(--example-bg);
+
+    border-left: 4px solid var(--example-border);
+
+    padding: 15px 18px;
+
+    margin-top: 15px;
+
+    border-radius: 6px;
+}
+
+
+/* =========================================================
+   TIP
+========================================================= */
+
+.tip {
+    background: var(--tip-bg);
+
+    border-left: 4px solid var(--tip-border);
+
+    padding: 15px 18px;
+
+    margin-top: 15px;
+
+    border-radius: 6px;
+}
+
+
+/* =========================================================
+   CODE
+========================================================= */
+
+pre {
+    background: var(--code-bg);
+
+    color: var(--code-text);
+
+    padding: 18px;
+
+    border-radius: 8px;
+
+    overflow-x: auto;
+
+    font-size: 14px;
+}
+
+code {
+    font-family: Consolas, Monaco, monospace;
+}
+
+
+/* =========================================================
+   HIDE ANSWER
+========================================================= */
+
+.answer-content {
+    display: none;
+}
+
+.show-answer {
+    background: var(--primary);
+
+    color: white;
+
+    border: none;
+
+    padding: 8px 13px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    margin-top: 10px;
+}
+
+.show-answer:hover {
+    background: var(--primary-hover);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    text-align: center;
+
+    color: var(--muted);
+
+    padding: 30px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    header {
+        padding: 12px 15px;
+    }
+
+    header h1 {
+        font-size: 17px;
+    }
+
+    .theme-btn {
+        padding: 8px 10px;
+    }
+
+    .container {
+        padding: 20px 12px;
+    }
+
+    .question {
+        padding: 18px;
+    }
+
+    .question h3 {
+        font-size: 16px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =======================================================
+     HEADER
+======================================================= -->
+
+<header>
+
+    <h1>Flutter Developer Interview Guide</h1>
+
+    <button
+        class="theme-btn"
+        id="themeButton"
+        onclick="toggleTheme()">
+        🌙 Dark Mode
+    </button>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- =======================================================
+     HERO
+======================================================= -->
+
+<div class="hero">
+
+    <h2>Flutter Developer — Hard Interview Questions</h2>
+
+    <p>
+        66 practical Flutter interview questions with
+        simple answers and real-world examples.
+    </p>
+
+    <p>
+        Focus on explaining your thinking instead of
+        memorizing definitions.
+    </p>
+
+    <div class="search-container">
+
+        <input
+            type="text"
+            id="search"
+            class="search"
+            placeholder="Search questions..."
+            onkeyup="searchQuestions()">
+
+    </div>
+
+</div>
+
+
+
+<!-- =======================================================
+     SECTION 1
+     FLUTTER FUNDAMENTALS
+======================================================= -->
+
+<div class="section">
+
+<h2 class="section-title">
+    1. Flutter Fundamentals
+</h2>
+
+
+<!-- Q1 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+1. What actually happens when a Flutter widget rebuilds?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+When a widget rebuilds, Flutter calls its
+<code>build()</code> method again and creates a new
+widget configuration.
+</p>
+
+<p>
+Flutter then compares the new widget configuration
+with the existing element tree and updates only
+the required parts.
+</p>
+
+</div>
+
+<div class="example">
+
+<strong>Example:</strong>
+
+<p>
+If a counter value changes, Flutter does not recreate
+the entire application. It rebuilds the widgets affected
+by that state change.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q2 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+2. Explain Widget, Element and RenderObject.
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+A <b>Widget</b> is the configuration or description of
+what the UI should look like.
+</p>
+
+<p>
+An <b>Element</b> represents the widget's position in
+the widget tree and manages its relationship with the tree.
+</p>
+
+<p>
+A <b>RenderObject</b> handles layout, painting and hit
+testing.
+</p>
+
+</div>
+
+<div class="example">
+
+<strong>Easy way to remember:</strong>
+
+<p>
+Widget → What the UI should be.</p>
+
+<p>
+Element → Where the widget lives.</p>
+
+<p>
+RenderObject → How it gets laid out and painted.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q3 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+3. What is BuildContext?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+BuildContext represents the location of a widget inside
+the widget tree.
+</p>
+
+<p>
+It allows us to access things such as Theme, Navigator,
+MediaQuery and inherited widgets.
+</p>
+
+</div>
+
+<div class="example">
+
+<strong>Example:</strong>
+
+<pre><code>
+Navigator.of(context).push(
+  MaterialPageRoute(
+    builder: (_) => const HomePage(),
+  ),
+);
+</code></pre>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q4 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+4. Why should expensive operations not be placed inside build()?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+The build method can run many times. If I perform
+expensive operations inside it, the UI can become slow.
+</p>
+
+</div>
+
+<div class="example">
+
+<strong>Example:</strong>
+
+<p>
+I should not make an API request or perform heavy JSON
+processing directly inside <code>build()</code>.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q5 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+5. Why use const widgets?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+Const widgets are compile-time constants.
+Flutter can reuse them when their values don't change.
+This can reduce unnecessary work during rebuilds.
+</p>
+
+</div>
+
+<div class="example">
+
+<pre><code>
+const Text("Hello");
+</code></pre>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q6 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+6. StatelessWidget vs StatefulWidget?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+A StatelessWidget does not maintain mutable local state.
+</p>
+
+<p>
+A StatefulWidget has a State object that can change
+during the lifetime of the widget.
+</p>
+
+</div>
+
+<div class="example">
+
+<strong>Example:</strong>
+
+<p>
+A static title can use StatelessWidget.
+A counter that changes can use StatefulWidget.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q7 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+7. Why initState() and dispose()?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+<code>initState()</code> is used for initialization when
+the State object is created.
+</p>
+
+<p>
+<code>dispose()</code> is used to clean up resources
+when the widget is removed.
+</p>
+
+</div>
+
+<div class="example">
+
+<pre><code>
+@override
+void initState() {
+  super.initState();
+
+  controller = TextEditingController();
+}
+
+@override
+void dispose() {
+  controller.dispose();
+
+  super.dispose();
+}
+</code></pre>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q8 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+8. What are Keys and when do you use them?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+Keys help Flutter identify widgets when the widget tree
+changes.
+</p>
+
+<p>
+They are especially useful when working with dynamic lists
+or when preserving the state of widgets after reordering.
+</p>
+
+</div>
+
+<div class="example">
+
+<pre><code>
+ListTile(
+  key: ValueKey(user.id),
+  title: Text(user.name),
+);
+</code></pre>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+<!-- =======================================================
+     SECTION 2
+     DART & ASYNC
+======================================================= -->
+
+<div class="section">
+
+<h2 class="section-title">
+2. Dart & Async
+</h2>
+
+
+<!-- Q9 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+9. Future vs Stream vs async/await?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+A Future represents one value that will be available
+later.
+</p>
+
+<p>
+A Stream represents multiple values over time.
+</p>
+
+<p>
+async/await makes asynchronous Future-based code easier
+to read.
+</p>
+
+</div>
+
+<div class="example">
+
+<pre><code>
+Future&lt;User&gt; getUser();
+
+Stream&lt;Message&gt; messages();
+
+final user = await getUser();
+</code></pre>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q10 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+10. Is Dart single-threaded?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+Dart code normally runs on a single isolate with an event
+loop.
+</p>
+
+<p>
+Asynchronous operations allow the application to continue
+while waiting for things such as network requests.
+</p>
+
+<p>
+For CPU-heavy work, Dart provides isolates.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q11 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+11. When would you use an isolate?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+I would use an isolate for CPU-intensive operations that
+could block the main UI isolate.
+</p>
+
+</div>
+
+<div class="example">
+
+<strong>Examples:</strong>
+
+<ul>
+<li>Large JSON parsing</li>
+<li>Image processing</li>
+<li>Complex calculations</li>
+<li>Large data processing</li>
+</ul>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q12 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+12. final vs const?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+<code>final</code> means the value can be assigned only once
+at runtime.
+</p>
+
+<p>
+<code>const</code> means the value is a compile-time constant.
+</p>
+
+</div>
+
+<div class="example">
+
+<pre><code>
+final name = getName();
+
+const age = 25;
+</code></pre>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q13 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+13. What is null safety?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+Null safety helps prevent null reference errors by making
+nullable and non-nullable types explicit.
+</p>
+
+</div>
+
+<div class="example">
+
+<pre><code>
+String name = "Praveen";
+
+String? nickname;
+
+if (nickname != null) {
+  print(nickname);
+}
+</code></pre>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+<!-- =======================================================
+     SECTION 3
+     STATE MANAGEMENT
+======================================================= -->
+
+<div class="section">
+
+<h2 class="section-title">
+3. State Management
+</h2>
+
+
+<!-- Q14 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+14. Why do we need state management?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+State management helps us manage and share application
+state in a predictable way.
+</p>
+
+<p>
+It also keeps business logic separate from UI code.
+</p>
+
+</div>
+
+<div class="example">
+
+<p>
+For example, login state may be needed by the home screen,
+profile screen and settings screen.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q15 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+15. Bloc vs Cubit?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+Cubit is simpler and directly exposes methods that emit
+new states.
+</p>
+
+<p>
+Bloc uses events and converts those events into states.
+</p>
+
+</div>
+
+<div class="example">
+
+<pre><code>
+class CounterCubit extends Cubit&lt;int&gt; {
+
+  CounterCubit() : super(0);
+
+  void increment() {
+    emit(state + 1);
+  }
+}
+</code></pre>
+
+<p>
+I normally choose Cubit when the state flow is simple and
+Bloc when event-driven logic becomes more complex.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q16 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+16. How would you manage a shopping cart across multiple screens?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+I would keep the cart state outside individual screens,
+using something like Cubit, Bloc or another state management
+solution.
+</p>
+
+<p>
+The cart would expose operations such as add, remove,
+increase quantity and decrease quantity.
+</p>
+
+</div>
+
+<div class="example">
+
+<p>
+The product screen adds an item to the cart.
+The cart screen observes the same state.
+The checkout screen also reads that state.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q17 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+17. How do you prevent unnecessary rebuilds with Bloc?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+I can use <code>BlocBuilder</code> carefully and use
+<code>buildWhen</code> or <code>BlocSelector</code> when
+only a specific part of the state is required.
+</p>
+
+</div>
+
+<div class="example">
+
+<pre><code>
+BlocSelector&lt;CartCubit, CartState, int&gt;(
+  selector: (state) => state.itemCount,
+  builder: (context, count) {
+    return Text('$count');
+  },
+)
+</code></pre>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q18 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+18. What happens if two updates modify the same state at the same time?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+I need to make sure state updates are handled predictably.
+I avoid directly modifying mutable state and create new
+state objects for each update.
+</p>
+
+<p>
+For asynchronous operations, I also consider whether the
+operations should run sequentially, concurrently or cancel
+previous requests.
+</p>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+<!-- =======================================================
+     SECTION 4
+     ARCHITECTURE
+======================================================= -->
+
+<div class="section">
+
+<h2 class="section-title">
+4. Architecture & Clean Code
+</h2>
+
+
+<!-- Q19 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+19. Explain Clean Architecture.
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+Clean Architecture separates the application into different
+responsibilities.
+</p>
+
+<ul>
+<li>Presentation</li>
+<li>Domain</li>
+<li>Data</li>
+</ul>
+
+<p>
+The main goal is to keep business logic independent from
+UI and external systems.
+</p>
+
+</div>
+
+<div class="example">
+
+<p>
+For example:</p>
+
+<p>
+UI → Cubit → Use Case → Repository → API
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q20 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+20. Why do we use a Repository?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+A repository hides where the data comes from.
+</p>
+
+<p>
+The rest of the application doesn't need to know whether
+the data came from an API, database or cache.
+</p>
+
+</div>
+
+<div class="example">
+
+<pre><code>
+class UserRepository {
+
+  Future&lt;User&gt; getUser() async {
+    // API or database
+  }
+}
+</code></pre>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q21 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+21. Why should business logic not be inside widgets?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+If business logic is inside widgets, the code becomes
+harder to test, reuse and maintain.
+</p>
+
+<p>
+I prefer keeping business logic inside Cubit, Bloc,
+use cases or services depending on the architecture.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q22 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+22. What is Dependency Injection?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+Dependency Injection means providing an object with the
+dependencies it needs instead of creating those dependencies
+inside the object.
+</p>
+
+</div>
+
+<div class="example">
+
+<pre><code>
+class UserService {
+
+  final UserRepository repository;
+
+  UserService(this.repository);
+}
+</code></pre>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q23 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+23. MVC vs Clean Architecture?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+MVC separates code into Model, View and Controller.
+</p>
+
+<p>
+Clean Architecture usually separates presentation,
+domain and data responsibilities with stronger dependency
+boundaries.
+</p>
+
+<p>
+For larger applications, Clean Architecture can make
+maintenance and testing easier.
+</p>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+<!-- =======================================================
+     SECTION 5
+     API & NETWORKING
+======================================================= -->
+
+<div class="section">
+
+<h2 class="section-title">
+5. REST API & Networking
+</h2>
+
+
+<!-- Q24 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+24. The API works in Postman but not in Flutter. How do you debug it?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+First I compare the Flutter request with the Postman request.
+</p>
+
+<ul>
+<li>URL</li>
+<li>HTTP method</li>
+<li>Headers</li>
+<li>Authorization</li>
+<li>Request body</li>
+<li>Content-Type</li>
+</ul>
+
+<p>
+Then I check the actual request and response using logs
+or an HTTP interceptor.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q25 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+25. Explain common HTTP status codes.
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<ul>
+<li><b>200</b> — Success</li>
+<li><b>201</b> — Created</li>
+<li><b>400</b> — Bad request</li>
+<li><b>401</b> — Unauthorized</li>
+<li><b>403</b> — Forbidden</li>
+<li><b>404</b> — Not found</li>
+<li><b>500</b> — Server error</li>
+</ul>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q26 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+26. PUT vs PATCH?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+PUT is generally used to replace the complete resource.
+</p>
+
+<p>
+PATCH is generally used to partially update a resource.
+</p>
+
+</div>
+
+<div class="example">
+
+<pre><code>
+PUT /users/10
+
+{
+  "name": "Praveen",
+  "email": "user@example.com"
+}
+</code></pre>
+
+<pre><code>
+PATCH /users/10
+
+{
+  "name": "Praveen Kumar"
+}
+</code></pre>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q27 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+27. How would you implement pagination?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+I keep track of the current page and whether more data is
+available.
+</p>
+
+<p>
+When the user approaches the bottom of the list, I request
+the next page and append the result to the existing list.
+</p>
+
+</div>
+
+<div class="example">
+
+<pre><code>
+GET /products?page=1&limit=20
+
+GET /products?page=2&limit=20
+</code></pre>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q28 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+28. What would you do if an API request times out?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+I would show an appropriate error message instead of leaving
+the user waiting indefinitely.
+</p>
+
+<p>
+Depending on the API, I could also retry the request with
+a reasonable limit and backoff.
+</p>
+
+</div>
+
+<div class="example">
+
+<p>
+For a payment request, I would be especially careful about
+retrying because repeating the request could cause duplicate
+transactions.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q29 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+29. How would you handle API errors consistently?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+I would create a common error model or exception structure
+and map network errors, server errors, validation errors and
+timeouts into it.
+</p>
+
+</div>
+
+<div class="example">
+
+<pre><code>
+NetworkException
+ServerException
+TimeoutException
+ValidationException
+UnauthorizedException
+</code></pre>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+<!-- =======================================================
+     SECTION 6
+     AUTHENTICATION
+======================================================= -->
+
+<div class="section">
+
+<h2 class="section-title">
+6. Authentication & Security
+</h2>
+
+
+<!-- Q30 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+30. Explain a JWT login flow.
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<ol>
+<li>User enters username and password.</li>
+<li>Flutter sends them to the login API.</li>
+<li>Server validates the credentials.</li>
+<li>Server returns an access token.</li>
+<li>Flutter stores the token securely.</li>
+<li>Flutter sends the token with authenticated requests.</li>
+</ol>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q31 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+31. What happens when the access token expires?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+If a refresh token is available, the application can request
+a new access token and retry the original request.
+</p>
+
+<p>
+If refresh fails, I would clear the authentication state and
+send the user back to login.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q32 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+32. Where should authentication tokens be stored?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+Sensitive tokens should be stored using secure platform
+storage rather than plain SharedPreferences.
+</p>
+
+<p>
+For Flutter, a secure storage solution can use Android
+Keystore and iOS Keychain.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q33 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+33. How would you protect authenticated routes?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+I would keep authentication state in a central place and
+check it before allowing access to protected screens.
+</p>
+
+<p>
+With GoRouter, for example, I can use redirects based on
+authentication state.
+</p>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+<!-- =======================================================
+     SECTION 7
+     PERFORMANCE
+======================================================= -->
+
+<div class="section">
+
+<h2 class="section-title">
+7. Performance
+</h2>
+
+
+<!-- Q34 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+34. You have a list containing 50,000 products. How would you handle it?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+I would not load all 50,000 products into memory at once.
+</p>
+
+<p>
+I would use server-side pagination and Flutter's lazy list
+widgets such as ListView.builder.
+</p>
+
+</div>
+
+<div class="example">
+
+<p>
+For example, load 20 or 50 products at a time and request
+the next page when the user scrolls near the bottom.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q35 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+35. Images are loading very slowly. What would you check?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<ul>
+<li>Image file size</li>
+<li>Image dimensions</li>
+<li>Network speed</li>
+<li>Caching</li>
+<li>Image format</li>
+<li>Thumbnail usage</li>
+</ul>
+
+</div>
+
+<div class="example">
+
+<p>
+For a product list, I would use smaller thumbnail images
+instead of loading the full-resolution image for every item.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q36 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+36. How would you investigate Flutter performance issues?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+I would reproduce the issue and use Flutter DevTools to
+inspect CPU usage, memory, widget rebuilds and frame rendering.
+</p>
+
+<p>
+I would identify the actual bottleneck before optimizing.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q37 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+37. How can you reduce unnecessary widget rebuilds?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<ul>
+<li>Use const widgets where possible.</li>
+<li>Split large widgets into smaller widgets.</li>
+<li>Use BlocSelector or buildWhen.</li>
+<li>Avoid putting unrelated state in the same widget.</li>
+<li>Use lazy lists for large collections.</li>
+</ul>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+<!-- =======================================================
+     SECTION 8
+     DEBUGGING
+======================================================= -->
+
+<div class="section">
+
+<h2 class="section-title">
+8. Debugging & Production Problems
+</h2>
+
+
+<!-- Q38 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+38. The app crashes only in production. How would you debug it?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+First I would check crash reporting tools and production
+logs to get the stack trace.
+</p>
+
+<p>
+Then I would identify the affected version, device,
+OS version and reproduction conditions.
+</p>
+
+<p>
+After fixing it, I would test the fix and release a new
+version.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q39 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+39. Android works but iOS fails. What would you check?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<ul>
+<li>iOS permissions</li>
+<li>Info.plist</li>
+<li>Pod dependencies</li>
+<li>Signing and provisioning</li>
+<li>Platform-specific code</li>
+<li>iOS API restrictions</li>
+</ul>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q40 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+40. A button triggers the API twice. How would you investigate?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+I would first check whether the button callback is firing
+twice or whether the API layer is retrying the request.
+</p>
+
+<p>
+I would also disable the button while the request is in
+progress if duplicate submissions are not allowed.
+</p>
+
+</div>
+
+<div class="example">
+
+<pre><code>
+if (state.isSubmitting) {
+  return;
+}
+
+submit();
+</code></pre>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q41 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+41. Memory usage keeps increasing. What could be the reason?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+It could be caused by resources that are not being released.
+</p>
+
+<ul>
+<li>Controllers not disposed</li>
+<li>Streams not cancelled</li>
+<li>Listeners not removed</li>
+<li>Large objects kept in memory</li>
+<li>Image memory</li>
+</ul>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+<!-- =======================================================
+     SECTION 9
+     LOCAL STORAGE
+======================================================= -->
+
+<div class="section">
+
+<h2 class="section-title">
+9. Local Storage & Offline Support
+</h2>
+
+
+<!-- Q42 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+42. SharedPreferences vs Hive vs SQLite?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+SharedPreferences is suitable for small key-value data.
+</p>
+
+<p>
+Hive is useful for local NoSQL-style storage.
+</p>
+
+<p>
+SQLite is suitable for structured relational data and
+more complex queries.
+</p>
+
+</div>
+
+<div class="example">
+
+<p>
+A theme preference can use SharedPreferences.
+A cached object can use Hive.
+Complex relational offline data can use SQLite.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q43 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+43. How would you implement offline support?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+I would cache important API data locally and display it
+when the network is unavailable.
+</p>
+
+<p>
+When the network becomes available again, I would refresh
+the data from the server.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q44 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+44. What if the user edits data while offline?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+I would save the change locally and mark it as pending.
+</p>
+
+<p>
+When the network becomes available, the application can
+sync the pending changes with the server.
+</p>
+
+</div>
+
+<div class="example">
+
+<p>
+For example:</p>
+
+<pre><code>
+Local database
+
+Task
+------
+id
+title
+syncStatus = pending
+</code></pre>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+<!-- =======================================================
+     SECTION 10
+     TESTING
+======================================================= -->
+
+<div class="section">
+
+<h2 class="section-title">
+10. Testing
+</h2>
+
+
+<!-- Q45 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+45. Unit Test vs Widget Test vs Integration Test?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<ul>
+
+<li>
+<b>Unit test:</b>
+Tests a small piece of logic.
+</li>
+
+<li>
+<b>Widget test:</b>
+Tests a Flutter widget and its interaction.
+</li>
+
+<li>
+<b>Integration test:</b>
+Tests the application flow across multiple parts.
+</li>
+
+</ul>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q46 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+46. How would you test a login feature?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<ul>
+<li>Valid credentials</li>
+<li>Invalid credentials</li>
+<li>Empty fields</li>
+<li>Network failure</li>
+<li>Server error</li>
+<li>Loading state</li>
+<li>Successful navigation</li>
+</ul>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q47 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+47. How would you test a Cubit?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+I would verify that calling a method produces the expected
+sequence of states.
+</p>
+
+</div>
+
+<div class="example">
+
+<pre><code>
+initial
+↓
+loading
+↓
+success
+</code></pre>
+
+<p>
+Or:</p>
+
+<pre><code>
+initial
+↓
+loading
+↓
+error
+</code></pre>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+<!-- =======================================================
+     SECTION 11
+     ANDROID & IOS
+======================================================= -->
+
+<div class="section">
+
+<h2 class="section-title">
+11. Android & iOS
+</h2>
+
+
+<!-- Q48 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+48. APK vs AAB?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+APK is an Android application package that can be installed
+directly on a device.
+</p>
+
+<p>
+AAB is Android App Bundle. Google Play uses it to generate
+optimized APKs for different devices.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q49 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+49. minSdk vs targetSdk?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+minSdk defines the minimum Android version supported by the
+application.
+</p>
+
+<p>
+targetSdk indicates the Android version the application is
+designed and tested against.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q50 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+50. Explain iOS certificates and provisioning profiles.
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+Certificates identify and sign the application.
+</p>
+
+<p>
+Provisioning profiles define which application identifier,
+devices and entitlements can be used with that signing setup.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q51 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+51. A Flutter plugin works on Android but fails on iOS. What do you check?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<ul>
+<li>Whether the plugin supports iOS</li>
+<li>iOS permissions</li>
+<li>Info.plist configuration</li>
+<li>Pod installation</li>
+<li>Minimum iOS version</li>
+<li>Native iOS configuration</li>
+<li>Signing capabilities</li>
+</ul>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+<!-- =======================================================
+     SECTION 12
+     REAL WORLD FEATURES
+======================================================= -->
+
+<div class="section">
+
+<h2 class="section-title">
+12. Hard Real-World Feature Design
+</h2>
+
+
+<!-- Q52 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+52. Design a shopping cart feature.
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+First I would understand the requirements.
+Then I would define the data model and state.
+</p>
+
+<p>
+The cart state would contain products, quantities,
+subtotal, discounts and total.
+</p>
+
+</div>
+
+<div class="example">
+
+<pre><code>
+Cart
+ ├── Product
+ ├── Quantity
+ ├── Price
+ ├── Discount
+ └── Total
+</code></pre>
+
+<p>
+I would keep cart logic inside Cubit/Bloc rather than
+directly inside the UI.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q53 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+53. How would you design a chat application?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+For real-time messaging, I would consider WebSockets.
+</p>
+
+<p>
+I would maintain message state locally and update it when
+new messages arrive.
+</p>
+
+<p>
+I would also handle reconnects, offline messages and
+message delivery status.
+</p>
+
+</div>
+
+<div class="example">
+
+<pre><code>
+User
+ ↓
+Flutter
+ ↓
+WebSocket
+ ↓
+Server
+ ↓
+Other User
+</code></pre>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q54 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+54. What edge cases would you consider for a booking feature?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<ul>
+<li>Slot already booked</li>
+<li>Network failure</li>
+<li>Payment failure</li>
+<li>Double tap</li>
+<li>Server timeout</li>
+<li>Provider unavailable</li>
+<li>Booking cancellation</li>
+<li>Time zone issues</li>
+</ul>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q55 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+55. Payment succeeded but booking failed. What would you do?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+This is a transaction consistency problem.
+</p>
+
+<p>
+I would not simply tell the user that payment failed.
+I would check the payment status and booking status from
+the server.
+</p>
+
+<p>
+The backend should ideally provide an idempotent and reliable
+workflow for payment and booking.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q56 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+56. How would you prevent double booking?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+The frontend can disable duplicate submissions, but the
+backend must be the final authority.
+</p>
+
+<p>
+The server should atomically verify and reserve the slot.
+</p>
+
+</div>
+
+<div class="example">
+
+<p>
+Two users may click the same slot at almost the same time.
+The backend must ensure only one booking succeeds.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q57 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+57. How would you design a notification system?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+I would use push notifications for events that need to reach
+the user when the application is in the background.
+</p>
+
+<p>
+I would handle foreground, background and terminated states.
+</p>
+
+</div>
+
+<div class="example">
+
+<p>
+For example, a booking confirmation could trigger a push
+notification containing the booking ID.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q58 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+58. How would you design location tracking?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+I would request the required location permissions and
+listen for location updates.
+</p>
+
+<p>
+I would avoid sending every GPS update to the server.
+Instead, I would use an appropriate distance or time
+threshold.
+</p>
+
+</div>
+
+<div class="example">
+
+<p>
+For vehicle tracking, the application could send an update
+when the vehicle moves a certain distance or after a
+reasonable interval.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q59 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+59. How should the app behave with a poor network?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<ul>
+<li>Show loading state</li>
+<li>Use cached data where possible</li>
+<li>Set reasonable timeouts</li>
+<li>Retry appropriate requests</li>
+<li>Show clear error messages</li>
+<li>Prevent duplicate submissions</li>
+</ul>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q60 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">HARD</span>
+60. What if the user closes the app immediately after pressing Submit?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+I would not rely only on the Flutter UI to determine whether
+the operation succeeded.
+</p>
+
+<p>
+The backend should process the request reliably and the
+operation should be idempotent when necessary.
+</p>
+
+<p>
+When the user opens the application again, I can fetch the
+latest server state.
+</p>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+<!-- =======================================================
+     SECTION 13
+     BEHAVIORAL
+======================================================= -->
+
+<div class="section">
+
+<h2 class="section-title">
+13. Behavioral & Experience Questions
+</h2>
+
+
+<!-- Q61 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">BEHAVIORAL</span>
+61. Tell me about a difficult bug you solved.
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Use STAR:</strong>
+
+<p>
+<b>Situation:</b>
+Explain what was happening.
+</p>
+
+<p>
+<b>Task:</b>
+Explain what you were responsible for.
+</p>
+
+<p>
+<b>Action:</b>
+Explain how you investigated and fixed it.
+</p>
+
+<p>
+<b>Result:</b>
+Explain what improved after the fix.
+</p>
+
+</div>
+
+<div class="example">
+
+<strong>Sample answer:</strong>
+
+<p>
+"In one of my projects, we had an issue where a feature
+was working correctly during development but had problems
+in production. I first reproduced the issue and checked
+the logs and API responses. I found that the problem was
+related to how the production data was handled. I fixed
+the issue, tested different cases and released the fix.
+After the release, the issue was resolved."
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q62 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">BEHAVIORAL</span>
+62. Tell me about a mistake you made.
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+Choose a real mistake that does not make you look careless,
+then explain what you learned.
+</p>
+
+</div>
+
+<div class="example">
+
+<strong>Sample answer:</strong>
+
+<p>
+"Earlier in my career, I sometimes tried to solve a problem
+completely by myself before asking for help. I realized that
+this could take more time than necessary. Now I first
+investigate the issue myself, but if I am blocked, I
+communicate with the team earlier."
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q63 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">BEHAVIORAL</span>
+63. What is your weakness?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Good approach:</strong>
+
+<p>
+Choose a genuine weakness and explain how you are improving
+it.
+</p>
+
+</div>
+
+<div class="example">
+
+<strong>Sample answer:</strong>
+
+<p>
+"One area I am working on is that sometimes I spend too much
+time trying to solve a problem on my own. I have learned to
+set a reasonable time limit and ask for help when I am
+blocked. This has helped me work more efficiently."
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q64 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">BEHAVIORAL</span>
+64. Why should we hire you?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+"I have practical experience building Flutter applications
+and working with APIs, state management and production
+issues. I am comfortable learning new technologies and
+debugging problems. I also focus on writing maintainable
+code and delivering features reliably."
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q65 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">BEHAVIORAL</span>
+65. Why are you looking for a new opportunity?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+"At this stage of my career, I am looking for an opportunity
+where I can apply my existing experience, take on more
+challenging problems and continue growing as a software
+developer."
+</p>
+
+</div>
+
+<div class="tip">
+
+<b>Interview Tip:</b>
+
+<p>
+Keep the answer positive. Avoid criticizing your previous
+company.
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- Q66 -->
+
+<div class="question">
+
+<h3>
+<span class="badge">BEHAVIORAL</span>
+66. What if you don't know the answer to an interview question?
+</h3>
+
+<button class="show-answer" onclick="toggleAnswer(this)">
+Show Answer
+</button>
+
+<div class="answer-content">
+
+<div class="answer">
+
+<strong>Simple Answer:</strong>
+
+<p>
+"I haven't worked with that directly yet, so I don't want
+to give you an incorrect answer. But I would approach it by
+first understanding the requirement, checking the relevant
+documentation and testing a small example."
+</p>
+
+</div>
+
+<div class="tip">
+
+<b>Important:</b>
+
+<p>
+Don't try to bluff. Interviewers usually care more about
+your problem-solving approach than pretending to know
+everything.
+</p>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+<!-- =======================================================
+     RAPID FIRE
+======================================================= -->
+
+<div class="section">
+
+<h2 class="section-title">
+⚡ Rapid-Fire Topics You Should Know
+</h2>
+
+<div class="question">
+
+<ul>
+
+<li>Widget lifecycle</li>
+
+<li>BuildContext</li>
+
+<li>Keys</li>
+
+<li>const</li>
+
+<li>final</li>
+
+<li>Null safety</li>
+
+<li>Future</li>
+
+<li>Stream</li>
+
+<li>async / await</li>
+
+<li>Isolates</li>
+
+<li>setState</li>
+
+<li>Bloc</li>
+
+<li>Cubit</li>
+
+<li>Provider</li>
+
+<li>GetX</li>
+
+<li>Repository pattern</li>
+
+<li>Clean Architecture</li>
+
+<li>Dependency Injection</li>
+
+<li>REST API</li>
+
+<li>HTTP methods</li>
+
+<li>HTTP status codes</li>
+
+<li>JWT</li>
+
+<li>Token refresh</li>
+
+<li>Secure storage</li>
+
+<li>Pagination</li>
+
+<li>Caching</li>
+
+<li>Offline support</li>
+
+<li>WebSockets</li>
+
+<li>Push notifications</li>
+
+<li>Firebase</li>
+
+<li>Crash reporting</li>
+
+<li>Flutter DevTools</li>
+
+<li>Memory leaks</li>
+
+<li>Performance optimization</li>
+
+<li>Unit testing</li>
+
+<li>Widget testing</li>
+
+<li>Integration testing</li>
+
+<li>Android permissions</li>
+
+<li>iOS permissions</li>
+
+<li>Info.plist</li>
+
+<li>Provisioning profiles</li>
+
+<li>App Store release</li>
+
+<li>Google Play release</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+
+<!-- =======================================================
+     INTERVIEW MINDSET
+======================================================= -->
+
+<div class="section">
+
+<h2 class="section-title">
+🎯 Interview Mindset
+</h2>
+
+<div class="question">
+
+<div class="answer">
+
+<h3>
+Don't answer like a textbook.
+</h3>
+
+<p>
+Instead of only saying:
+</p>
+
+<pre><code>
+"Bloc is a state management solution."
+</code></pre>
+
+<p>
+Try to explain:
+</p>
+
+<pre><code>
+"I have used Bloc/Cubit to separate UI from business
+logic. For example, when loading a list from an API,
+the Cubit manages loading, success and error states,
+while the UI only reacts to those states."
+</code></pre>
+
+</div>
+
+
+<div class="example">
+
+<h3>
+Use this structure for technical questions:
+</h3>
+
+<pre><code>
+1. What is it?
+        ↓
+2. Why do we use it?
+        ↓
+3. How does it work?
+        ↓
+4. Real project example
+        ↓
+5. Trade-off / limitation
+</code></pre>
+
+</div>
+
+
+<div class="tip">
+
+<h3>
+For feature-design questions:
+</h3>
+
+<pre><code>
+Requirement
+     ↓
+Architecture
+     ↓
+State Management
+     ↓
+API / Database
+     ↓
+UI
+     ↓
+Error Handling
+     ↓
+Testing
+     ↓
+Performance
+     ↓
+Release
+</code></pre>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer>
+
+Flutter Developer Interview Preparation
+
+<br>
+
+Practice explaining the answer in your own words.
+
+</footer>
+
+
+
+<script>
+
+/* =========================================================
+   DARK / LIGHT MODE
+========================================================= */
+
+function toggleTheme() {
+
+    document.body.classList.toggle("dark");
+
+    const isDark =
+        document.body.classList.contains("dark");
+
+    const button =
+        document.getElementById("themeButton");
+
+    if (isDark) {
+
+        button.innerHTML = "☀️ Light Mode";
+
+        localStorage.setItem("theme", "dark");
+
+    } else {
+
+        button.innerHTML = "🌙 Dark Mode";
+
+        localStorage.setItem("theme", "light");
+
+    }
+}
+
+
+/* =========================================================
+   LOAD SAVED THEME
+========================================================= */
+
+const savedTheme =
+    localStorage.getItem("theme");
+
+if (savedTheme === "dark") {
+
+    document.body.classList.add("dark");
+
+    document.getElementById("themeButton").innerHTML =
+        "☀️ Light Mode";
+}
+
+
+/* =========================================================
+   SHOW / HIDE ANSWERS
+========================================================= */
+
+function toggleAnswer(button) {
+
+    const answer =
+        button.nextElementSibling;
+
+    if (answer.style.display === "block") {
+
+        answer.style.display = "none";
+
+        button.innerHTML = "Show Answer";
+
+    } else {
+
+        answer.style.display = "block";
+
+        button.innerHTML = "Hide Answer";
+
+    }
+}
+
+
+/* =========================================================
+   SEARCH QUESTIONS
+========================================================= */
+
+function searchQuestions() {
+
+    const searchInput =
+        document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+    const questions =
+        document.querySelectorAll(".question");
+
+    questions.forEach(function(question) {
+
+        const text =
+            question.innerText.toLowerCase();
+
+        if (text.includes(searchInput)) {
+
+            question.style.display = "";
+
+        } else {
+
+            question.style.display = "none";
+
+        }
+
+    });
+}
+
+</script>
+
+</body>
+</html>
